@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+ES:wght@100..400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teina Motivacija</title>
+    <style>
+    body {
+    margin: 0;
+    font-family: "Playwrite ES", cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #ec4899, #f43f5e);
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    font-size: 2.85rem;
+    font-weight: bold;
+    margin-bottom: 200px;
+    margin-top: 0px;
+}
+
+.quote-box {
+    max-width: 600px;
+    width: 90%;
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 00px;
+}
+
+.quote-content {
+    padding: 10px;
+}
+
+.quote-text {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.quote-author {
+    font-size: 0.875rem;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.footer {
+    margin-top: 20px;
+}
+
+.footer-text {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Motivacija za nastaviti živit!</h1>
+        <div class="quote-box">
+            <div class="quote-content">
+                <p id="quoteText" class="quote-text">"Loading quote..."</p>
+                <p id="authorText" class="quote-author">- Ante</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p class="footer-text">Za Teu!</p>
+        </div>
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const quoteText = document.getElementById('quoteText');
+    let quotes = [];
+    let currentQuoteIndex = 0;
+
+    // Fetch quotes from GitHub .txt file
+    fetch('https://raw.githubusercontent.com/teinamotivacija/teinamotivacija.github.io/main/quotes.txt')
+        .then(response => response.text())
+        .then(data => {
+            quotes = data.split('\n').map(quote => quote.trim());
+            displayQuote();
+        });
+
+    function displayQuote() {
+        quoteText.textContent = `"${quotes[currentQuoteIndex]}"`;
+    }
+});
+
+    </script>
+</body>
+</html>
